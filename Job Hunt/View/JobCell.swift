@@ -10,7 +10,7 @@ import UIKit
 
 class JobCell: BaseCell {
     
-    let positionLabel : UILabel = {
+    var positionLabel : UILabel = {
         let label = UILabel()
         label.text = "Position Title"
         label.font = UIFont.boldSystemFont(ofSize: 20)
@@ -18,7 +18,7 @@ class JobCell: BaseCell {
         return label
     }()
     
-    let tagsLabel : UILabel = {
+    var tagsLabel : UILabel = {
         let label = UILabel()
         label.text = "Tag 1 • Tag 2 • Tag 3"
         label.font = UIFont.italicSystemFont(ofSize: 14)
@@ -26,7 +26,7 @@ class JobCell: BaseCell {
         return label
     }()
     
-    let logoImageView : UIImageView = {
+    var logoImageView : UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = UIColor.blue
         imageView.contentMode = .scaleAspectFit
@@ -59,7 +59,7 @@ class JobCell: BaseCell {
         return view
     }()
     
-    let postedLabel : UILabel = {
+    var postedLabel : UILabel = {
         let label = UILabel()
         label.text = "Posted X ago"
         label.textColor = #colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1)

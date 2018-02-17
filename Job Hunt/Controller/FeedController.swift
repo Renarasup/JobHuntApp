@@ -57,9 +57,14 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
         return tm
     }()
     
+    var jobs = [Job]()
+    var tags = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
+        getJobs()
+        
         view.addSubview(headerView)
         view.addConstraintsWithFormat(format: "H:|[v0]|", views: headerView)
         view.addConstraintsWithFormat(format: "V:|[v0(299)]|", views: headerView)
@@ -88,15 +93,37 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
         collectionView?.contentInset = UIEdgeInsets(top: 250, left: 0, bottom: 0, right: 0)
         collectionView?.scrollIndicatorInsets = UIEdgeInsets(top: 250, left: 0, bottom: 0, right: 0)
         collectionView?.register(JobCell.self, forCellWithReuseIdentifier: cellId)
-        
+    }
+    
+    func getJobs(){
+        let jobsUrl = "https://remoteok.io/remote-jobs.json"
+        guard let url = URL(string: jobsUrl) else { return }
+        URLSession.shared.dataTask(with: url) { (data, response, err) in
+            guard let data = data else { return }
+            do {
+                self.jobs = try! JSONDecoder().decode([Job].self, from: data)
+                self.tags = populateTagFilter(self.jobs)
+                self.tagsMenu.tags = self.tags
+                self.reloadContent()
+            }
+        }.resume()
+    }
+    
+    func reloadContent(){
+        collectionView?.reloadData()
+        tagsMenu.collectionView.reloadData()
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return jobs.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! JobCell
+        
+        cell.positionLabel.text = jobs[indexPath.row].position
+        cell.tagsLabel.text = displayTagsBullet(jobs[indexPath.row].tags)
+        cell.postedLabel.text = convertDateToTimeSince(jobs[indexPath.row].date)
         
         return cell
     }

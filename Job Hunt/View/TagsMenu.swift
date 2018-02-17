@@ -11,6 +11,7 @@ import UIKit
 class TagsMenu: UIView, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout,UICollectionViewDataSource {
     
     let cellId = "cellId"
+    var tags = [String]()
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -19,6 +20,8 @@ class TagsMenu: UIView, UICollectionViewDelegate, UICollectionViewDelegateFlowLa
         cv.backgroundColor = UIColor(red: 230/255, green: 32/255, blue: 31/255, alpha: 1)
         cv.dataSource = self
         cv.delegate = self
+        layout.estimatedItemSize.width = 50
+        layout.estimatedItemSize.height = 40
         return cv
     }()
     
@@ -26,11 +29,10 @@ class TagsMenu: UIView, UICollectionViewDelegate, UICollectionViewDelegateFlowLa
         super.init(frame: frame)
         
         collectionView.register(TagCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView.showsHorizontalScrollIndicator = false
         addSubview(collectionView)
         addConstraintsWithFormat(format: "H:|[v0]|", views: collectionView)
         addConstraintsWithFormat(format: "V:|[v0]|", views: collectionView)
-        let selectedIndexPath = IndexPath(item: 0, section: 0)
-        collectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: [])
         
         collectionView.backgroundColor = UIColor.clear
         
@@ -41,16 +43,13 @@ class TagsMenu: UIView, UICollectionViewDelegate, UICollectionViewDelegateFlowLa
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return tags.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! TagCell
+        cell.tagLabel.text = tags[indexPath.row].capitalized
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 130, height: frame.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -96,14 +95,14 @@ class TagCell : BaseCell {
     
     override func setupViews() {
         addSubview(containerView)
-        addConstraintsWithFormat(format: "H:[v0(120)]", views: containerView)
+        addConstraintsWithFormat(format: "H:|-10-[v0]|", views: containerView)
         addConstraintsWithFormat(format: "V:[v0(40)]", views: containerView)
         
         addConstraint(NSLayoutConstraint(item: containerView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0))
         addConstraint(NSLayoutConstraint(item: containerView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0))
         
         containerView.addSubview(tagLabel)
-        addConstraintsWithFormat(format: "H:[v0]", views: tagLabel)
+        addConstraintsWithFormat(format: "H:|-20-[v0]-20-|", views: tagLabel)
         addConstraintsWithFormat(format: "V:[v0]", views: tagLabel)
         
         addConstraint(NSLayoutConstraint(item: tagLabel, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0))

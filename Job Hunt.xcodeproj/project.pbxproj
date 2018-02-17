@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6426D6042037A28600F003E0 /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6426D6032037A28600F003E0 /* Job.swift */; };
+		6426D6082037B69E00F003E0 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6426D6072037B69E00F003E0 /* Date.swift */; };
+		6426D60A2037BE2500F003E0 /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6426D6092037BE2500F003E0 /* Tags.swift */; };
 		64B6B17C2036C0590033A0B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B6B17B2036C0590033A0B6 /* AppDelegate.swift */; };
 		64B6B17E2036C0590033A0B6 /* FeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B6B17D2036C0590033A0B6 /* FeedController.swift */; };
 		64B6B1832036C0590033A0B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64B6B1822036C0590033A0B6 /* Assets.xcassets */; };
@@ -16,10 +19,12 @@
 		64B6B1942036D60F0033A0B6 /* JobCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B6B1932036D60F0033A0B6 /* JobCell.swift */; };
 		64B6B1962036E05C0033A0B6 /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B6B1952036E05C0033A0B6 /* Gradient.swift */; };
 		64B6B1982036EB290033A0B6 /* TagsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B6B1972036EB290033A0B6 /* TagsMenu.swift */; };
-		64B6B19C2036FA920033A0B6 /* Jobs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B6B19B2036FA920033A0B6 /* Jobs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6426D6032037A28600F003E0 /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
+		6426D6072037B69E00F003E0 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		6426D6092037BE2500F003E0 /* Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
 		64B6B1782036C0590033A0B6 /* Job Hunt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Job Hunt.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64B6B17B2036C0590033A0B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64B6B17D2036C0590033A0B6 /* FeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedController.swift; sourceTree = "<group>"; };
@@ -31,7 +36,6 @@
 		64B6B1932036D60F0033A0B6 /* JobCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobCell.swift; sourceTree = "<group>"; };
 		64B6B1952036E05C0033A0B6 /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
 		64B6B1972036EB290033A0B6 /* TagsMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsMenu.swift; sourceTree = "<group>"; };
-		64B6B19B2036FA920033A0B6 /* Jobs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jobs.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +76,6 @@
 				64B6B1822036C0590033A0B6 /* Assets.xcassets */,
 				64B6B1842036C0590033A0B6 /* LaunchScreen.storyboard */,
 				64B6B1872036C0590033A0B6 /* Info.plist */,
-				64B6B19B2036FA920033A0B6 /* Jobs.swift */,
 			);
 			path = "Job Hunt";
 			sourceTree = "<group>";
@@ -83,6 +86,8 @@
 				64B6B18E2036C5940033A0B6 /* BaseCell.swift */,
 				64B6B1902036C9F00033A0B6 /* Constraint.swift */,
 				64B6B1952036E05C0033A0B6 /* Gradient.swift */,
+				6426D6072037B69E00F003E0 /* Date.swift */,
+				6426D6092037BE2500F003E0 /* Tags.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -107,6 +112,7 @@
 		64B6B19A2036FA870033A0B6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6426D6032037A28600F003E0 /* Job.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -185,10 +191,12 @@
 				64B6B17E2036C0590033A0B6 /* FeedController.swift in Sources */,
 				64B6B1962036E05C0033A0B6 /* Gradient.swift in Sources */,
 				64B6B1942036D60F0033A0B6 /* JobCell.swift in Sources */,
-				64B6B19C2036FA920033A0B6 /* Jobs.swift in Sources */,
+				6426D6042037A28600F003E0 /* Job.swift in Sources */,
 				64B6B1982036EB290033A0B6 /* TagsMenu.swift in Sources */,
 				64B6B18F2036C5940033A0B6 /* BaseCell.swift in Sources */,
 				64B6B17C2036C0590033A0B6 /* AppDelegate.swift in Sources */,
+				6426D6082037B69E00F003E0 /* Date.swift in Sources */,
+				6426D60A2037BE2500F003E0 /* Tags.swift in Sources */,
 				64B6B1912036C9F00033A0B6 /* Constraint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

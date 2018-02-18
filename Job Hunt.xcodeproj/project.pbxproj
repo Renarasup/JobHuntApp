@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		6426D6042037A28600F003E0 /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6426D6032037A28600F003E0 /* Job.swift */; };
 		6426D6082037B69E00F003E0 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6426D6072037B69E00F003E0 /* Date.swift */; };
-		6426D60A2037BE2500F003E0 /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6426D6092037BE2500F003E0 /* Tags.swift */; };
+		6426D60E2037D74B00F003E0 /* JobListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6426D60D2037D74B00F003E0 /* JobListing.swift */; };
 		64B6B17C2036C0590033A0B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B6B17B2036C0590033A0B6 /* AppDelegate.swift */; };
 		64B6B17E2036C0590033A0B6 /* FeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B6B17D2036C0590033A0B6 /* FeedController.swift */; };
 		64B6B1832036C0590033A0B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64B6B1822036C0590033A0B6 /* Assets.xcassets */; };
@@ -19,12 +19,16 @@
 		64B6B1942036D60F0033A0B6 /* JobCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B6B1932036D60F0033A0B6 /* JobCell.swift */; };
 		64B6B1962036E05C0033A0B6 /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B6B1952036E05C0033A0B6 /* Gradient.swift */; };
 		64B6B1982036EB290033A0B6 /* TagsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B6B1972036EB290033A0B6 /* TagsMenu.swift */; };
+		64BC509E20384992005C34F9 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BC509D20384992005C34F9 /* Image.swift */; };
+		64FD270820381B5300BBEA76 /* DateHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FD270720381B5300BBEA76 /* DateHeaderCell.swift */; };
+		64FD270C2038388800BBEA76 /* glow_loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 64FD270B2038388800BBEA76 /* glow_loading.json */; };
+		92A5EE8CF5BC3831223BB5EE /* Pods_Job_Hunt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF63974FD6BAE21C98CA7901 /* Pods_Job_Hunt.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6426D6032037A28600F003E0 /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 		6426D6072037B69E00F003E0 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
-		6426D6092037BE2500F003E0 /* Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
+		6426D60D2037D74B00F003E0 /* JobListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobListing.swift; sourceTree = "<group>"; };
 		64B6B1782036C0590033A0B6 /* Job Hunt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Job Hunt.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64B6B17B2036C0590033A0B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64B6B17D2036C0590033A0B6 /* FeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedController.swift; sourceTree = "<group>"; };
@@ -36,6 +40,12 @@
 		64B6B1932036D60F0033A0B6 /* JobCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobCell.swift; sourceTree = "<group>"; };
 		64B6B1952036E05C0033A0B6 /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
 		64B6B1972036EB290033A0B6 /* TagsMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsMenu.swift; sourceTree = "<group>"; };
+		64BC509D20384992005C34F9 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		64FD270720381B5300BBEA76 /* DateHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHeaderCell.swift; sourceTree = "<group>"; };
+		64FD270B2038388800BBEA76 /* glow_loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = glow_loading.json; sourceTree = "<group>"; };
+		E68F41EB2CE698806C8161A5 /* Pods-Job Hunt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Job Hunt.release.xcconfig"; path = "Pods/Target Support Files/Pods-Job Hunt/Pods-Job Hunt.release.xcconfig"; sourceTree = "<group>"; };
+		ECD0B8FF04F851466D982E19 /* Pods-Job Hunt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Job Hunt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Job Hunt/Pods-Job Hunt.debug.xcconfig"; sourceTree = "<group>"; };
+		FF63974FD6BAE21C98CA7901 /* Pods_Job_Hunt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Job_Hunt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,17 +53,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92A5EE8CF5BC3831223BB5EE /* Pods_Job_Hunt.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		57D57019BFC1729A2B2A4FCA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				ECD0B8FF04F851466D982E19 /* Pods-Job Hunt.debug.xcconfig */,
+				E68F41EB2CE698806C8161A5 /* Pods-Job Hunt.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		64B6B16F2036C0590033A0B6 = {
 			isa = PBXGroup;
 			children = (
 				64B6B17A2036C0590033A0B6 /* Job Hunt */,
 				64B6B1792036C0590033A0B6 /* Products */,
+				57D57019BFC1729A2B2A4FCA /* Pods */,
+				F2FAFE0E4808183547343FBE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,6 +96,7 @@
 				64B6B18D2036C5880033A0B6 /* Helpers */,
 				64B6B17B2036C0590033A0B6 /* AppDelegate.swift */,
 				64B6B1822036C0590033A0B6 /* Assets.xcassets */,
+				64FD270B2038388800BBEA76 /* glow_loading.json */,
 				64B6B1842036C0590033A0B6 /* LaunchScreen.storyboard */,
 				64B6B1872036C0590033A0B6 /* Info.plist */,
 			);
@@ -87,7 +110,8 @@
 				64B6B1902036C9F00033A0B6 /* Constraint.swift */,
 				64B6B1952036E05C0033A0B6 /* Gradient.swift */,
 				6426D6072037B69E00F003E0 /* Date.swift */,
-				6426D6092037BE2500F003E0 /* Tags.swift */,
+				6426D60D2037D74B00F003E0 /* JobListing.swift */,
+				64BC509D20384992005C34F9 /* Image.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -97,6 +121,7 @@
 			children = (
 				64B6B1932036D60F0033A0B6 /* JobCell.swift */,
 				64B6B1972036EB290033A0B6 /* TagsMenu.swift */,
+				64FD270720381B5300BBEA76 /* DateHeaderCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -117,6 +142,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		F2FAFE0E4808183547343FBE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FF63974FD6BAE21C98CA7901 /* Pods_Job_Hunt.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -124,9 +157,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 64B6B18A2036C0590033A0B6 /* Build configuration list for PBXNativeTarget "Job Hunt" */;
 			buildPhases = (
+				D154B5154D9FCAA5DE8EA77C /* [CP] Check Pods Manifest.lock */,
 				64B6B1742036C0590033A0B6 /* Sources */,
 				64B6B1752036C0590033A0B6 /* Frameworks */,
 				64B6B1762036C0590033A0B6 /* Resources */,
+				779D32EF73F0387393D3AB0A /* [CP] Embed Pods Frameworks */,
+				58467E981788A6F7068648AC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -178,10 +214,65 @@
 			files = (
 				64B6B1862036C0590033A0B6 /* LaunchScreen.storyboard in Resources */,
 				64B6B1832036C0590033A0B6 /* Assets.xcassets in Resources */,
+				64FD270C2038388800BBEA76 /* glow_loading.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		58467E981788A6F7068648AC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Job Hunt/Pods-Job Hunt-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		779D32EF73F0387393D3AB0A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Job Hunt/Pods-Job Hunt-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Job Hunt/Pods-Job Hunt-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D154B5154D9FCAA5DE8EA77C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Job Hunt-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		64B6B1742036C0590033A0B6 /* Sources */ = {
@@ -190,13 +281,15 @@
 			files = (
 				64B6B17E2036C0590033A0B6 /* FeedController.swift in Sources */,
 				64B6B1962036E05C0033A0B6 /* Gradient.swift in Sources */,
+				6426D60E2037D74B00F003E0 /* JobListing.swift in Sources */,
 				64B6B1942036D60F0033A0B6 /* JobCell.swift in Sources */,
 				6426D6042037A28600F003E0 /* Job.swift in Sources */,
 				64B6B1982036EB290033A0B6 /* TagsMenu.swift in Sources */,
+				64BC509E20384992005C34F9 /* Image.swift in Sources */,
+				64FD270820381B5300BBEA76 /* DateHeaderCell.swift in Sources */,
 				64B6B18F2036C5940033A0B6 /* BaseCell.swift in Sources */,
 				64B6B17C2036C0590033A0B6 /* AppDelegate.swift in Sources */,
 				6426D6082037B69E00F003E0 /* Date.swift in Sources */,
-				6426D60A2037BE2500F003E0 /* Tags.swift in Sources */,
 				64B6B1912036C9F00033A0B6 /* Constraint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -324,6 +417,7 @@
 		};
 		64B6B18B2036C0590033A0B6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ECD0B8FF04F851466D982E19 /* Pods-Job Hunt.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -339,6 +433,7 @@
 		};
 		64B6B18C2036C0590033A0B6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E68F41EB2CE698806C8161A5 /* Pods-Job Hunt.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

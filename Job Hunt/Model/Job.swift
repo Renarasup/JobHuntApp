@@ -10,27 +10,29 @@ import Foundation
 
 struct Job : Decodable {
     
-    var slug : String
     var id : String
-    var epoch : String
-    var date : String
-    var company : String // TODO - Change to Date()
-    var position : String
-    var tags : [String]
-    var logo : String
+    var created_at : String
+    var title : String
+    var location : String
+    var type : String
     var description : String
+    var how_to_apply : String
+    var company : String
+    var company_url : String?
+    var company_logo : String?
     var url : String
     
     init(json : [String : Any]){
-        slug = json["slug"] as! String
         id = json["id"] as! String
-        epoch = json["epoch"] as! String
-        date = json["date"] as! String
-        company = json["company"] as! String
-        position = json["position"] as! String
-        tags = json["slug"] as! [String]
-        logo = json["logo"] as! String
+        created_at = json["created_at"] as! String
+        title = json["title"] as! String
+        location = json["location"] as! String
+        type = json["type"] as! String
         description = json["description"] as! String
+        how_to_apply = json["how_to_apply"] as! String
+        company = json["company"] as! String
+        company_url = json["company_url"] as? String
+        company_logo = json["company_logo"] as? String
         url = json["url"] as! String
     }
 }

@@ -10,15 +10,36 @@ import UIKit
 
 class JobCell: BaseCell {
     
+    var job: Job? {
+        didSet{
+            positionLabel.text = job?.title
+            
+            companyLabel.text = job?.company
+            
+            if let jobType = job?.type {
+                typeLabel.text = jobType
+            }
+            
+            if let jobLocation = job?.location {
+                locationLabel.text = jobLocation
+            }
+            
+            if let logoImgUrl = job?.company_logo {
+                logoImageView.loadFromURL(urlString: logoImgUrl)
+            }
+        }
+    }
+    
     var positionLabel : UILabel = {
         let label = UILabel()
         label.text = "Position Title"
         label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.numberOfLines = 0
         label.textColor = #colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1)
         return label
     }()
     
-    var tagsLabel : UILabel = {
+    var typeLabel : UILabel = {
         let label = UILabel()
         label.text = "Tag 1 • Tag 2 • Tag 3"
         label.font = UIFont.italicSystemFont(ofSize: 14)
@@ -28,12 +49,11 @@ class JobCell: BaseCell {
     
     var logoImageView : UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = UIColor.blue
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
-    let superContainerView : UIView = {
+    var superContainerView : UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.white
         view.layer.cornerRadius = 14
@@ -45,7 +65,7 @@ class JobCell: BaseCell {
         return view
     }()
     
-    let containerView : UIView = {
+    var containerView : UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.white
         view.layer.cornerRadius = 14
@@ -53,17 +73,25 @@ class JobCell: BaseCell {
         return view
     }()
     
-    let detailContainerView : UIView = {
+    var detailContainerView : UIView = {
         let view = UIView()
         view.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
         return view
     }()
     
-    var postedLabel : UILabel = {
+    var locationLabel : UILabel = {
         let label = UILabel()
-        label.text = "Posted X ago"
+        label.text = "Location"
         label.textColor = #colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 14)
+        return label
+    }()
+    
+    var companyLabel : UILabel = {
+        let label = UILabel()
+        label.text = "Company"
+        label.font = UIFont.italicSystemFont(ofSize: 12)
+        label.textColor = #colorLiteral(red: 0.5137254902, green: 0.5137254902, blue: 0.5137254902, alpha: 1)
         return label
     }()
     
@@ -71,7 +99,7 @@ class JobCell: BaseCell {
         //-- Super Container View Setup --//
         addSubview(superContainerView)
         addConstraintsWithFormat(format: "H:|-20-[v0]-20-|", views: superContainerView)
-        addConstraintsWithFormat(format: "V:|-20-[v0]|", views: superContainerView)
+        addConstraintsWithFormat(format: "V:|-10-[v0]-10-|", views: superContainerView)
         
         //-- Container View Setup --//
         superContainerView.addSubview(containerView)
@@ -81,11 +109,11 @@ class JobCell: BaseCell {
         //-- Position Label Setup --//
         containerView.addSubview(positionLabel)
         addConstraintsWithFormat(format: "H:|-15-[v0]-15-[v1]", views: positionLabel, logoImageView)
-        addConstraintsWithFormat(format: "V:|-15-[v0]-5-[v1]", views: positionLabel, tagsLabel)
+        addConstraintsWithFormat(format: "V:|-15-[v0]-5-[v1]", views: positionLabel, typeLabel)
         
-        //-- Tags Label Setup --//
-        containerView.addSubview(tagsLabel)
-        addConstraintsWithFormat(format: "H:|-15-[v0]-15-[v1]", views: tagsLabel, logoImageView)
+        //-- Type Label Setup --//
+        containerView.addSubview(typeLabel)
+        addConstraintsWithFormat(format: "H:|-15-[v0]-15-[v1]", views: typeLabel, logoImageView)
         
         //-- Logo Image Setup --//
         containerView.addSubview(logoImageView)
@@ -97,10 +125,15 @@ class JobCell: BaseCell {
         addConstraintsWithFormat(format: "H:|[v0]|", views: detailContainerView)
         addConstraintsWithFormat(format: "V:[v0(36)]|", views: detailContainerView)
         
-        //-- Posted Label Setup --//
-        detailContainerView.addSubview(postedLabel)
-        addConstraintsWithFormat(format: "H:|-15-[v0]", views: postedLabel)
-        addConstraintsWithFormat(format: "V:|-10-[v0]-10-|", views: postedLabel)
+        //-- Location Label Setup --//
+        detailContainerView.addSubview(locationLabel)
+        addConstraintsWithFormat(format: "H:|-15-[v0]", views: locationLabel)
+        addConstraintsWithFormat(format: "V:|-10-[v0]-10-|", views: locationLabel)
+        
+        //-- Company Label Setup --//
+        detailContainerView.addSubview(companyLabel)
+        addConstraintsWithFormat(format: "H:[v0]-15-|", views: companyLabel)
+        addConstraintsWithFormat(format: "V:|-10-[v0]-10-|", views: companyLabel)
         
     }
 }

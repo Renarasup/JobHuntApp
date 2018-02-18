@@ -11,7 +11,6 @@ import UIKit
 class TagsMenu: UIView, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout,UICollectionViewDataSource {
     
     let cellId = "cellId"
-    var tags = [String]()
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -30,6 +29,7 @@ class TagsMenu: UIView, UICollectionViewDelegate, UICollectionViewDelegateFlowLa
         
         collectionView.register(TagCell.self, forCellWithReuseIdentifier: cellId)
         collectionView.showsHorizontalScrollIndicator = false
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         addSubview(collectionView)
         addConstraintsWithFormat(format: "H:|[v0]|", views: collectionView)
         addConstraintsWithFormat(format: "V:|[v0]|", views: collectionView)
@@ -48,12 +48,27 @@ class TagsMenu: UIView, UICollectionViewDelegate, UICollectionViewDelegateFlowLa
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! TagCell
-        cell.tagLabel.text = tags[indexPath.row].capitalized
+        cell.tagLabel.text = tags[indexPath.row]
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if tags[indexPath.row] == "All" {
+            isFilterOn = false
+        } else {
+            isFilterOn = true
+            
+            if isFilterOn == true {
+                selectedTag = tags[indexPath.row]
+                FeedController().filterResults()
+            }
+        }
+        
     }
     
 }
@@ -95,14 +110,14 @@ class TagCell : BaseCell {
     
     override func setupViews() {
         addSubview(containerView)
-        addConstraintsWithFormat(format: "H:|-10-[v0]|", views: containerView)
+        addConstraintsWithFormat(format: "H:|[v0]|", views: containerView)
         addConstraintsWithFormat(format: "V:[v0(40)]", views: containerView)
         
         addConstraint(NSLayoutConstraint(item: containerView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0))
         addConstraint(NSLayoutConstraint(item: containerView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0))
         
         containerView.addSubview(tagLabel)
-        addConstraintsWithFormat(format: "H:|-20-[v0]-20-|", views: tagLabel)
+        addConstraintsWithFormat(format: "H:|-15-[v0]-15-|", views: tagLabel)
         addConstraintsWithFormat(format: "V:[v0]", views: tagLabel)
         
         addConstraint(NSLayoutConstraint(item: tagLabel, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0))

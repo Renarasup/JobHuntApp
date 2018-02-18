@@ -13,11 +13,19 @@ func convertDate(_ dateString: String) -> Date {
     return date
 }
 
-func convertDateToString(_ dateString: String) -> String {
+func convertDateISO8601ToString(_ dateString: String) -> String {
     var convertedDate = ""
     let formatter = DateFormatter()
     formatter.dateFormat = "EEEE, MMMM d"
     let date = ISO8601DateFormatter().date(from: dateString)!
+    convertedDate = formatter.string(from: date)
+    return convertedDate
+}
+
+func convertDateToString(_ date: Date) -> String {
+    var convertedDate = ""
+    let formatter = DateFormatter()
+    formatter.dateFormat = "EEEE, MMMM d"
     convertedDate = formatter.string(from: date)
     return convertedDate
 }
@@ -92,5 +100,23 @@ extension DateFormatter {
         }
         
         return result
+    }
+}
+
+extension Date {
+    var yesterday: Date {
+        return Calendar.current.date(byAdding: .day, value: -1, to: noon)!
+    }
+    var tomorrow: Date {
+        return Calendar.current.date(byAdding: .day, value: 1, to: noon)!
+    }
+    var noon: Date {
+        return Calendar.current.date(bySettingHour: 12, minute: 0, second: 0, of: self)!
+    }
+    var month: Int {
+        return Calendar.current.component(.month,  from: self)
+    }
+    var isLastDayOfMonth: Bool {
+        return tomorrow.month != month
     }
 }

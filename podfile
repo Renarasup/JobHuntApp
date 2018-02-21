@@ -7,4 +7,7 @@ target 'Job Hunt' do
 
   # Pods for Job Hunt
   pod 'lottie-ios'
+  pod 'Atributika'
+  pod 'RealmSwift'
+
 end

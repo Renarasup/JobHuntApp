@@ -58,17 +58,6 @@ class TagsMenu: UIView, UICollectionViewDelegate, UICollectionViewDelegateFlowLa
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if tags[indexPath.row] == "All" {
-            isFilterOn = false
-        } else {
-            isFilterOn = true
-            
-            if isFilterOn == true {
-                selectedTag = tags[indexPath.row]
-                FeedController().filterResults()
-            }
-        }
-        
     }
     
 }

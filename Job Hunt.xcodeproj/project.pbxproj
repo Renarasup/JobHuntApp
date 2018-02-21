@@ -7,9 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		64164BFC2039EA56002D366A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64164BFB2039EA56002D366A /* TabBarController.swift */; };
+		64164BFE2039F68E002D366A /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64164BFD2039F68E002D366A /* SearchController.swift */; };
+		64164C002039F6C9002D366A /* SavedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64164BFF2039F6C9002D366A /* SavedController.swift */; };
+		64164C02203A455F002D366A /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64164C01203A455F002D366A /* DetailController.swift */; };
 		6426D6042037A28600F003E0 /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6426D6032037A28600F003E0 /* Job.swift */; };
 		6426D6082037B69E00F003E0 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6426D6072037B69E00F003E0 /* Date.swift */; };
 		6426D60E2037D74B00F003E0 /* JobListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6426D60D2037D74B00F003E0 /* JobListing.swift */; };
+		647E5116203AD0C9009E9E24 /* Saved.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647E5115203AD0C9009E9E24 /* Saved.swift */; };
+		649117BC203A8A4300F5E073 /* HTMLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649117BB203A8A4300F5E073 /* HTMLExtension.swift */; };
 		64B6B17C2036C0590033A0B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B6B17B2036C0590033A0B6 /* AppDelegate.swift */; };
 		64B6B17E2036C0590033A0B6 /* FeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B6B17D2036C0590033A0B6 /* FeedController.swift */; };
 		64B6B1832036C0590033A0B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64B6B1822036C0590033A0B6 /* Assets.xcassets */; };
@@ -20,15 +26,22 @@
 		64B6B1962036E05C0033A0B6 /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B6B1952036E05C0033A0B6 /* Gradient.swift */; };
 		64B6B1982036EB290033A0B6 /* TagsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B6B1972036EB290033A0B6 /* TagsMenu.swift */; };
 		64BC509E20384992005C34F9 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BC509D20384992005C34F9 /* Image.swift */; };
+		64CD28CE203B00CD000D5F22 /* PositionSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CD28CD203B00CD000D5F22 /* PositionSelectorController.swift */; };
 		64FD270820381B5300BBEA76 /* DateHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FD270720381B5300BBEA76 /* DateHeaderCell.swift */; };
 		64FD270C2038388800BBEA76 /* glow_loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 64FD270B2038388800BBEA76 /* glow_loading.json */; };
 		92A5EE8CF5BC3831223BB5EE /* Pods_Job_Hunt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF63974FD6BAE21C98CA7901 /* Pods_Job_Hunt.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		64164BFB2039EA56002D366A /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		64164BFD2039F68E002D366A /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		64164BFF2039F6C9002D366A /* SavedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedController.swift; sourceTree = "<group>"; };
+		64164C01203A455F002D366A /* DetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 		6426D6032037A28600F003E0 /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 		6426D6072037B69E00F003E0 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		6426D60D2037D74B00F003E0 /* JobListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobListing.swift; sourceTree = "<group>"; };
+		647E5115203AD0C9009E9E24 /* Saved.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Saved.swift; sourceTree = "<group>"; };
+		649117BB203A8A4300F5E073 /* HTMLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLExtension.swift; sourceTree = "<group>"; };
 		64B6B1782036C0590033A0B6 /* Job Hunt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Job Hunt.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64B6B17B2036C0590033A0B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64B6B17D2036C0590033A0B6 /* FeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedController.swift; sourceTree = "<group>"; };
@@ -41,6 +54,7 @@
 		64B6B1952036E05C0033A0B6 /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
 		64B6B1972036EB290033A0B6 /* TagsMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsMenu.swift; sourceTree = "<group>"; };
 		64BC509D20384992005C34F9 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		64CD28CD203B00CD000D5F22 /* PositionSelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionSelectorController.swift; sourceTree = "<group>"; };
 		64FD270720381B5300BBEA76 /* DateHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHeaderCell.swift; sourceTree = "<group>"; };
 		64FD270B2038388800BBEA76 /* glow_loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = glow_loading.json; sourceTree = "<group>"; };
 		E68F41EB2CE698806C8161A5 /* Pods-Job Hunt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Job Hunt.release.xcconfig"; path = "Pods/Target Support Files/Pods-Job Hunt/Pods-Job Hunt.release.xcconfig"; sourceTree = "<group>"; };
@@ -112,6 +126,7 @@
 				6426D6072037B69E00F003E0 /* Date.swift */,
 				6426D60D2037D74B00F003E0 /* JobListing.swift */,
 				64BC509D20384992005C34F9 /* Image.swift */,
+				649117BB203A8A4300F5E073 /* HTMLExtension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -130,6 +145,11 @@
 			isa = PBXGroup;
 			children = (
 				64B6B17D2036C0590033A0B6 /* FeedController.swift */,
+				64164BFB2039EA56002D366A /* TabBarController.swift */,
+				64164BFD2039F68E002D366A /* SearchController.swift */,
+				64164BFF2039F6C9002D366A /* SavedController.swift */,
+				64164C01203A455F002D366A /* DetailController.swift */,
+				64CD28CD203B00CD000D5F22 /* PositionSelectorController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -138,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				6426D6032037A28600F003E0 /* Job.swift */,
+				647E5115203AD0C9009E9E24 /* Saved.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -243,10 +264,16 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Job Hunt/Pods-Job Hunt-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Atributika/Atributika.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Atributika.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,18 +306,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64164BFE2039F68E002D366A /* SearchController.swift in Sources */,
 				64B6B17E2036C0590033A0B6 /* FeedController.swift in Sources */,
+				64164BFC2039EA56002D366A /* TabBarController.swift in Sources */,
+				647E5116203AD0C9009E9E24 /* Saved.swift in Sources */,
 				64B6B1962036E05C0033A0B6 /* Gradient.swift in Sources */,
 				6426D60E2037D74B00F003E0 /* JobListing.swift in Sources */,
 				64B6B1942036D60F0033A0B6 /* JobCell.swift in Sources */,
 				6426D6042037A28600F003E0 /* Job.swift in Sources */,
 				64B6B1982036EB290033A0B6 /* TagsMenu.swift in Sources */,
+				64164C02203A455F002D366A /* DetailController.swift in Sources */,
+				64CD28CE203B00CD000D5F22 /* PositionSelectorController.swift in Sources */,
 				64BC509E20384992005C34F9 /* Image.swift in Sources */,
+				649117BC203A8A4300F5E073 /* HTMLExtension.swift in Sources */,
 				64FD270820381B5300BBEA76 /* DateHeaderCell.swift in Sources */,
 				64B6B18F2036C5940033A0B6 /* BaseCell.swift in Sources */,
 				64B6B17C2036C0590033A0B6 /* AppDelegate.swift in Sources */,
 				6426D6082037B69E00F003E0 /* Date.swift in Sources */,
 				64B6B1912036C9F00033A0B6 /* Constraint.swift in Sources */,
+				64164C002039F6C9002D366A /* SavedController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

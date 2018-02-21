@@ -79,10 +79,17 @@ class JobCell: BaseCell {
         return view
     }()
     
+    let locationImageView : UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = #imageLiteral(resourceName: "location")
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
     var locationLabel : UILabel = {
         let label = UILabel()
-        label.text = "Location"
-        label.textColor = #colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1)
+        label.text = "Location, LC"
+        label.textColor = #colorLiteral(red: 0.3607843137, green: 0.08235294118, blue: 0.8, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 14)
         return label
     }()
@@ -126,9 +133,11 @@ class JobCell: BaseCell {
         addConstraintsWithFormat(format: "V:[v0(36)]|", views: detailContainerView)
         
         //-- Location Label Setup --//
+        detailContainerView.addSubview(locationImageView)
         detailContainerView.addSubview(locationLabel)
-        addConstraintsWithFormat(format: "H:|-15-[v0]", views: locationLabel)
-        addConstraintsWithFormat(format: "V:|-10-[v0]-10-|", views: locationLabel)
+        addConstraintsWithFormat(format: "H:|-15-[v0(14)]-5-[v1]", views: locationImageView, locationLabel)
+        addConstraintsWithFormat(format: "V:|-10-[v0]-10-|", views: locationImageView)
+        detailContainerView.addConstraint(NSLayoutConstraint(item: locationLabel, attribute: .centerY, relatedBy: .equal, toItem: locationImageView, attribute: .centerY, multiplier: 1, constant: 0))
         
         //-- Company Label Setup --//
         detailContainerView.addSubview(companyLabel)

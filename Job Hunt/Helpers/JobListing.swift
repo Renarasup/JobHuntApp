@@ -14,9 +14,24 @@ var jobsYesterday = [Job]()
 var jobsThisWeek = [Job]()
 var jobsLastMonth = [Job]()
 var tags = ["PHP", "Rails", "Python", "JavaScript", "Scala", "Android", "iOS", "Linux", "Erlang"]
-var selectedTag = ""
-var isFilterOn = false
 var jobsFiltered = [Job]()
+
+// Get Data
+func getData(group: DispatchGroup){
+    let jobsUrl = "https://jobs.github.com/positions.json"
+    guard let url = URL(string: jobsUrl) else { return }
+    URLSession.shared.dataTask(with: url) { (data, response, err) in
+        guard let data = data else { return }
+        do {
+            jobs = try! JSONDecoder().decode([Job].self, from: data)
+            jobsToday = getPostedBeetween(start: 0, end: 0)
+            jobsYesterday = getPostedBeetween(start: 1, end: 1)
+            jobsThisWeek = getPostedBeetween(start: 2, end: 7)
+            jobsLastMonth = getPostedBeetween(start: 8, end: 30)
+            group.leave()
+        }
+        }.resume()
+}
 
 // Get Beetween
 func getPostedBeetween(start: Int, end: Int) -> [Job]{
@@ -40,6 +55,18 @@ func getPostedBeetween(start: Int, end: Int) -> [Job]{
         }
         date = tomorrow!
     }
-    
     return filtered
+}
+
+// Get by Tag
+func getTagFiltered(_ tag: String,_ group: DispatchGroup){
+    let jobsUrl = "https://jobs.github.com/positions.json?search=" + tag
+    guard let url = URL(string: jobsUrl) else { return }
+    URLSession.shared.dataTask(with: url) { (data, response, err) in
+        guard let data = data else { return }
+        do {
+            jobsFiltered = try! JSONDecoder().decode([Job].self, from: data)
+            group.leave()
+        }
+        }.resume()
 }

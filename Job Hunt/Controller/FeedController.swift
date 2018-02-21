@@ -23,6 +23,7 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
         view.endPointX = view.frame.width
         view.endPointY = view.frame.height
         view.clipsToBounds = true
+        view.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 299)
         return view
     }()
     
@@ -48,16 +49,27 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
         return label
     }()
     
+    let headerCategoryButtonVisualEffect : UIVisualEffectView = {
+        let visualEffectView = UIVisualEffectView()
+        visualEffectView.effect = UIBlurEffect(style: UIBlurEffectStyle.dark)
+        visualEffectView.layer.cornerRadius = 18
+        visualEffectView.layer.masksToBounds = true
+        visualEffectView.frame = CGRect(x: 0, y: 0, width: 36, height: 36)
+        return visualEffectView
+    }()
+    
     let headerCategoryButton : UIButton = {
         let bt = UIButton()
         bt.setImage(#imageLiteral(resourceName: "categories"), for: .normal)
         bt.contentMode = .scaleAspectFit
+        bt.frame = CGRect(x: 0, y: 0, width: 26, height: 26)
         return bt
     }()
     
     let tagContainer : UIVisualEffectView = {
         let visualEffectView = UIVisualEffectView()
         visualEffectView.effect = UIBlurEffect(style: UIBlurEffectStyle.dark)
+        visualEffectView.frame = CGRect(x: 0, y: 0, width: 375, height: 66)
         return visualEffectView
     }()
     
@@ -74,10 +86,12 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     let loadingAnimationView = LOTAnimationView(name: "glow_loading")
     
+    let contentUpdateGroup = DispatchGroup()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getData()
+        refreshJobs()
         
         view.addSubview(loadingOverlay)
         view.addConstraintsWithFormat(format: "H:|[v0]|", views: loadingOverlay)
@@ -110,9 +124,14 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
         headerView.addConstraintsWithFormat(format: "H:|-20-[v0]|", views: headerTitle)
         headerView.addConstraintsWithFormat(format: "V:|-54-[v0]", views: headerTitle)
         
-        headerView.addSubview(headerCategoryButton)
-        headerView.addConstraintsWithFormat(format: "H:[v0]-20-|", views: headerCategoryButton)
-        headerView.addConstraint(NSLayoutConstraint(item: headerCategoryButton, attribute: .centerY, relatedBy: .equal, toItem: headerTitle, attribute: .centerY, multiplier: 1, constant: 0))
+        headerView.addSubview(headerCategoryButtonVisualEffect)
+        headerView.addConstraintsWithFormat(format: "H:[v0(36)]-20-|", views: headerCategoryButtonVisualEffect)
+        headerView.addConstraintsWithFormat(format: "V:[v0(36)]", views: headerCategoryButtonVisualEffect)
+        headerView.addConstraint(NSLayoutConstraint(item: headerCategoryButtonVisualEffect, attribute: .centerY, relatedBy: .equal, toItem: headerTitle, attribute: .centerY, multiplier: 1, constant: 0))
+        
+        headerCategoryButton.addTarget(self, action: #selector(self.positionSelectorTapped(_:)), for: .touchUpInside)
+        headerCategoryButton.center = headerCategoryButtonVisualEffect.contentView.center
+        headerCategoryButtonVisualEffect.contentView.addSubview(headerCategoryButton)
         
         headerView.addSubview(tagContainer)
         headerView.addConstraintsWithFormat(format: "H:|[v0]|", views: tagContainer)
@@ -123,64 +142,46 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
         tagContainer.contentView.addConstraintsWithFormat(format: "V:|[v0]|", views: tagsMenu)
         
         collectionView?.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
-        collectionView?.contentInset = UIEdgeInsets(top: 269, left: 0, bottom: 0, right: 0)
-        collectionView?.scrollIndicatorInsets = UIEdgeInsets(top: 269, left: 0, bottom: 0, right: 0)
+        collectionView?.contentInset = UIEdgeInsets(top: headerView.frame.height - 30, left: 0, bottom: 0, right: 0)
+        collectionView?.scrollIndicatorInsets = UIEdgeInsets(top: headerView.frame.height - 30, left: 0, bottom: 0, right: 0)
         collectionView?.showsVerticalScrollIndicator = false
         collectionView?.register(JobCell.self, forCellWithReuseIdentifier: cellId)
         collectionView?.register(DateHeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
         
     }
     
-    func filterResults() {
-        if selectedTag != "" {
-            let jobsUrl = "https://jobs.github.com/positions.json?search=" + selectedTag
-            guard let url = URL(string: jobsUrl) else { return }
-            URLSession.shared.dataTask(with: url) { (data, response, err) in
-                guard let data = data else { return }
-                do {
-                    jobsFiltered = try! JSONDecoder().decode([Job].self, from: data)
-                    print("Results OK")
-                }
-                }.resume()
+    func refreshJobs() {
+        contentUpdateGroup.enter()
+        getData(group: contentUpdateGroup)
+        
+        contentUpdateGroup.notify(queue: DispatchQueue.main) {
+            self.reloadContent()
         }
     }
     
-    // Get Data
-    func getData(){
-        let jobsUrl = "https://jobs.github.com/positions.json"
-        guard let url = URL(string: jobsUrl) else { return }
-        URLSession.shared.dataTask(with: url) { (data, response, err) in
-            guard let data = data else { return }
-            do {
-                jobs = try! JSONDecoder().decode([Job].self, from: data)
-                jobsToday = getPostedBeetween(start: 0, end: 0)
-                jobsYesterday = getPostedBeetween(start: 1, end: 1)
-                jobsThisWeek = getPostedBeetween(start: 2, end: 7)
-                jobsLastMonth = getPostedBeetween(start: 8, end: 30)
-                self.reloadContent()
-            }
-            }.resume()
-    }
-    
-    
-    
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
-        print(offsetY)
+        
+        print("Offset: \(offsetY)")
+        
         if offsetY < 0 {
             self.circleBgImageView.transform = CGAffineTransform(translationX: 0, y: offsetY/3)
             self.trianglesBgImageView.transform = CGAffineTransform(translationX: 0, y: -offsetY/3)
         }
-        
-        if offsetY < -300 {
-            UIView.animate(withDuration: 0.7, delay: 0, options: .curveEaseInOut, animations: {
-                self.headerView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 299)
-            }, completion: nil)
+    
+        if offsetY > -300 {
+            if offsetY < -110{
+                print("Animate Height")
+                self.headerView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: -offsetY + 10)
+                self.tagContainer.layer.opacity = 1
+            } else {
+                print("Maintain Height")
+                self.headerView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 110)
+                self.tagContainer.layer.opacity = 0
+            }
         }
         
-        if offsetY > -300 && offsetY < -110 {
-            self.headerView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: -offsetY)
-        }
+        print("Height: \(self.headerView.frame.height)")
     }
     
     func reloadContent(){
@@ -193,9 +194,16 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
         }
     }
     
+    @objc func positionSelectorTapped(_ sender: UIGestureRecognizer){
+        let positionSelectorVC = PositionSelectorController()
+        positionSelectorVC.modalPresentationStyle = .overCurrentContext
+        present(positionSelectorVC, animated: true, completion: nil)
+        
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! DateHeaderCell
-        
+
         if indexPath.section == 0 && jobsToday.count >= 1 {
             header.dateHeaderLabel.text = convertDateToString(Date()).uppercased()
         }
@@ -211,7 +219,6 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
         if indexPath.section == 3 && jobsLastMonth.count >= 1 {
             header.dateHeaderLabel.text = "Last Month".uppercased()
         }
-        
         
         return header
     }
@@ -230,7 +237,6 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         var count = 0
-        
         if section == 0 {
             count = jobsToday.count
         }
@@ -253,7 +259,7 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! JobCell
-        
+
         if indexPath.section == 0 {
             cell.job = jobsToday[indexPath.row]
         }
@@ -270,8 +276,29 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
             cell.job = jobsLastMonth[indexPath.row]
         }
         
-        
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailVC = DetailController()
+        
+        if indexPath.section == 0 {
+            detailVC.job = jobsToday[indexPath.row]
+        }
+        
+        if indexPath.section == 1 {
+            detailVC.job = jobsYesterday[indexPath.row]
+        }
+        
+        if indexPath.section == 2 {
+            detailVC.job = jobsThisWeek[indexPath.row]
+        }
+        
+        if indexPath.section == 3 {
+            detailVC.job = jobsLastMonth[indexPath.row]
+        }
+        detailVC.modalPresentationStyle = .overCurrentContext
+        self.present(detailVC, animated: true, completion: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

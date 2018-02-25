@@ -13,7 +13,7 @@ $ cd JobHuntApp
 ```
 $ pod install
 ```
-3. Open the Xcode Workplace
+3. Open the Xcode Workspace
 ```
 $ open Job Hunt.xcworkspace
 ```
